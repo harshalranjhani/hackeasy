@@ -6,9 +6,16 @@ export default async function basicChecks(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  const {
+    githubUsername = "harshalranjhani",
+    githubURL,
+    repositoryName = "soundverse-saas",
+    hackName = "Technica",
+    userEmail = "ranjhaniharshal@gmail.com",
+  } = req.body;
+
   try {
-    const { githubUsername, githubURL, repositoryName, hackName, userEmail } =
-      req.body;
+    console.log(userEmail);
     const repoData = await octokit.request(
       `GET /repos/${githubUsername}/${repositoryName}/contents/`,
       {
@@ -40,14 +47,14 @@ export default async function basicChecks(req, res) {
       .status(200)
       .json({ success: true, message: "All basic checks passed!" });
   } catch (e) {
-    console.error(e);
+    // console.error(e);
     sendMail(
       userEmail,
       "Action Needed: Hackathon Submission",
-      `Dear ,
+      `Dear ${githubUsername},
     Your submission requires attention. Your GitHub link is invalid or not public. Please rectify this issue promptly to ensure consideration.
-    Best regards,
-    Team ${hackName}
+      Best regards,
+      Team ${hackName}
     `
     );
     return res
