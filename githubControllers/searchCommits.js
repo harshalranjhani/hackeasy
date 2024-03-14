@@ -1,23 +1,15 @@
 import octokit from "./ocktokit";
 
-export default async function searchCommits(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
-  const { query } = req.body;
-
+export default async function searchCommits(query) {
   try {
-    const commitData = await octokit.request("GET /search/commits?q=test", {
+    const commitData = await octokit.request(`GET /search/commits?q=${query}`, {
       headers: {
         "X-GitHub-Api-Version": "2022-11-28",
       },
     });
-    return res.status(200).json({ success: true, data: commitData.data });
+    return { success: true, data: commitData.data };
   } catch (e) {
     console.log(e);
-    return res
-      .status(500)
-      .json({ success: false, error: "Internal server error" });
+    return { success: false, error: "Internal server error" };
   }
 }
