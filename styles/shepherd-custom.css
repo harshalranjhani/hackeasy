@@ -1,0 +1,183 @@
+/* shepherd styles */
+.shepherd-modal-overlay-container,
+.shepherd-element {
+  z-index: 99 !important;
+}
+
+/* shepherd arrow styling  */
+.shepherd-arrow:before {
+  background: #512cac !important;
+  background-color: #512cac !important;
+}
+
+/* blinking dot */
+.shepherd-arrow::after {
+  content: "";
+
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  aspect-ratio: 1;
+  background: #512cac;
+  box-shadow: 0 0 0 0 #512cac;
+  -webkit-animation: l1 1s infinite;
+  animation: l1 1s infinite;
+
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+
+.shepherd-element[data-popper-placement^="right"] .shepherd-arrow::after {
+  left: -20px;
+  right: auto;
+}
+
+.shepherd-element[data-popper-placement^="left"] .shepherd-arrow::after {
+  right: -20px;
+  left: auto;
+}
+
+.shepherd-element[data-popper-placement^="top"] .shepherd-arrow::after {
+  bottom: -20px;
+  top: auto;
+}
+
+.shepherd-element[data-popper-placement^="bottom"] .shepherd-arrow::after {
+  top: -20px;
+  bottom: auto;
+}
+
+/* shepherd steps styling  */
+.shepherd-element {
+  background: #512cac;
+  -webkit-filter: drop-shadow(0px 4px 11px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0px 4px 11px rgba(0, 0, 0, 0.5));
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.shepherd-has-title .shepherd-content .shepherd-header {
+  background: transparent;
+  padding: 0;
+}
+
+.shepherd-title {
+  flex-direction: column;
+  gap: 14px;
+}
+
+.shepherd-header {
+  margin-bottom: 14px;
+}
+
+.stepCount {
+  color: #fff;
+  font-family: "Urbanist", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.65px;
+  line-height: normal;
+}
+
+.stepTitle {
+  color: #fff;
+  font-family: "Urbanist";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: auto;
+  letter-spacing: 0.8px;
+  line-height: normal;
+}
+
+.shepherd-text {
+  color: #fff;
+  font-family: "Urbanist";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0.6px;
+
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.shepherd-footer {
+  padding: 0;
+}
+
+/* shepherd step buttons */
+.shepherd-button-primary {
+  border-radius: 5px;
+  background: #743dfa;
+
+  color: #fff;
+  text-align: center;
+  font-family: "Urbanist", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px; /* 169.231% */
+}
+
+.shepherd-button-primary:focus,
+.shepherd-button-secondary:focus {
+  outline: none;
+}
+
+.shepherd-button:not(:disabled):hover {
+  background: #9164ff;
+  color: initial;
+}
+
+.shepherd-button.shepherd-button-secondary {
+  background: transparent;
+
+  color: #fff;
+  text-align: center;
+  font-family: "Urbanist", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 169.231% */
+  border-radius: 5px;
+}
+
+.shepherd-button.shepherd-button-secondary:not(:disabled):hover {
+  background: transparent;
+  color: initial;
+  background: #9164ff;
+}
+
+/* disable scroll */
+.shepherd-modal-overlay-container.shepherd-modal-is-visible path {
+  /* pointer-events: none; */
+}
+
+@media screen and (max-width: 768px) {
+  .shepherd-element {
+    padding: 16px;
+    border-radius: 11px;
+    max-width: 300px;
+  }
+  .shepherd-title {
+    gap: 11px;
+  }
+  .shepherd-header {
+    margin-bottom: 11px;
+  }
+  .shepherd-text {
+    margin-bottom: 19px;
+    font-size: 10px;
+  }
+  .stepTitle {
+    font-size: 14px;
+  }
+  .shepherd-button-primary,
+  .shepherd-button.shepherd-button-secondary {
+    font-size: 11px;
+  }
+}

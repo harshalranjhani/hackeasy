@@ -1,0 +1,142 @@
+.project-heading-combiner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.collab-people:hover {
+  cursor: pointer;
+}
+
+.collab-people {
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.project-heading {
+  display: flex;
+  flex-grow: 2;
+  width: 50%;
+  align-items: center;
+  color: #9164ff;
+}
+
+/* .user-button,
+  .settings-button:hover {
+    border: none;
+    outline: none;
+  } */
+
+.user-button,
+.settings-button:active {
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdown {
+  margin-left: 1rem;
+}
+
+.nav-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* box-shadow: 0px 4px 20px -5.71709px rgba(0, 0, 0, 0.15); */
+}
+
+.nav-input {
+  background: #101010;
+  border-radius: 20px;
+  height: 3rem;
+  width: 21rem;
+  font-size: 16px;
+  border: none;
+}
+
+.nav-input::-webkit-input-placeholder {
+  padding: 15px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-button {
+  width: 6.2rem;
+  height: 2.4rem;
+  background: linear-gradient(
+    126.21deg,
+    #6a35ee 0%,
+    #9930ef 14.24%,
+    #5737ee 49.56%,
+    #795ceb 93.2%
+  );
+  /* border: 1px solid #6891ff; */
+  border-radius: 14px;
+  margin-right: 5px;
+  font-size: 13px;
+}
+
+.signup-button:focus {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1;
+  padding: 1.5rem 1rem;
+  /* padding: 1rem 1rem; */
+  /* width: 100%; */
+}
+
+.nav-items a {
+  cursor: pointer;
+  margin: 0 1rem;
+  color: #fff;
+  font-family: "Urbanist", sans-serif;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav-input-container {
+    display: none;
+  }
+
+  .signup-button {
+    margin-right: 5px;
+  }
+
+  .nav-items {
+    padding: 1.5rem 2rem;
+  }
+
+  .nav-items a {
+    margin: 0 0.5rem;
+    /* width: 0.3rem; */
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .signup-button {
+    margin-right: 5px;
+  }
+
+  .nav-items {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .nav-items a {
+    margin: 0 10px;
+  }
+}

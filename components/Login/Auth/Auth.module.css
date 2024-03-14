@@ -1,0 +1,360 @@
+.password-container {
+  position: relative;
+}
+
+.password-container .form-input {
+  padding-right: 2rem;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 23px;
+  right: 0.5rem;
+  cursor: pointer;
+}
+
+.no-acc-label,
+.already-label {
+  margin: 2.31rem 0;
+  color: #525252;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.no-acc-label a,
+.already-label a {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.already-label a:hover,
+.no-acc-label a:hover,
+.forgot-pass a:hover {
+  color: #535bf2;
+}
+
+.already-label {
+  margin: 0 0 2rem;
+}
+
+.forgot-pass {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 100%;
+  margin: 7px 0;
+  margin-bottom: 0.94rem;
+}
+.forgot-pass a {
+  cursor: pointer;
+  color: #5f5f5f;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+.form-label,
+.form-error {
+  color: #fff;
+  font-family: "Urbanist", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 29px;
+}
+
+.form-error {
+  color: red;
+  text-align: right;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  padding: 2px 0.75rem;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+
+.form-container {
+  margin-top: 5rem;
+  /* border: 1px solid blue; */
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 2rem; */
+}
+
+.login-form {
+  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-heading {
+  padding: 0 2rem;
+  margin: 1rem 0;
+
+  color: #fff;
+  text-align: center;
+  font-family: "Urbanist", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.form-input {
+  padding: 0.9375rem 0.75rem;
+  margin: 0.5rem 0;
+  margin-bottom: 0.94rem;
+  width: 100%;
+  height: 2.8125rem;
+  /* border: 1px solid #ccc; */
+  outline: none;
+  font-size: 1rem;
+  font-family: "Urbanist", sans-serif;
+  border: 0;
+  border-radius: 8px;
+  background: #2b2b2b;
+}
+
+.form-input-error {
+  margin-bottom: 1px;
+  border: 1px solid rgba(255, 0, 0);
+}
+
+.form-input::-webkit-input-placeholder {
+  color: #585858;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.form-input::-moz-placeholder {
+  color: #585858;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.form-input:-ms-input-placeholder {
+  color: #585858;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.form-input::-ms-input-placeholder {
+  color: #585858;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.form-input::placeholder {
+  color: #585858;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 0.5rem 2rem; */
+  margin: 0.5rem 2rem;
+  width: 100%;
+  /* margin-left: 20%; */
+}
+
+.social-progress {
+  margin: 7px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-left: 10%; */
+  width: 100%;
+  height: 2rem;
+}
+
+.social-progress hr {
+  border: 0.0625rem solid #5f5f5f;
+  width: 100%;
+  height: 0;
+  margin: 0 0rem;
+}
+
+.social-progress p {
+  min-width: 6.75rem;
+  margin: 0.2rem 1rem;
+  color: #5f5f5f;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.social-form-button {
+  display: flex;
+  gap: 0.5rem;
+  height: 2.8125rem;
+  border: 1px solid #343434;
+  background: #222;
+
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.terms {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+  color: #5f5f5f;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.terms a {
+  cursor: pointer;
+  text-decoration: underline;
+
+  color: #5f5f5f;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.signup-terms {
+  margin-top: 0.5rem;
+  margin-bottom: 3.06rem;
+}
+
+.login {
+  border-radius: 0.5rem;
+  background: #9164ff;
+  color: #fff;
+  text-align: center;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  height: 2.8125rem;
+}
+
+.signup {
+  height: 2.8125rem;
+  border-radius: 0.5rem;
+  color: #cbc8c8;
+  text-align: center;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.signup-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0)),
+    url("/assets/signupbg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.signin-section {
+  background-color: #101010;
+  height: 100%;
+}
+
+.promotional-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.with {
+  color: #fff;
+  text-align: center;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.sumo-lings-welcome-label {
+  margin: 0.5rem 0;
+  color: #fff;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.sumo-lings-welcome-label a {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.sumo-lings-welcome-label a:hover {
+  color: #535bf2;
+}
+
+@media screen and (max-width: 960px) {
+  .form-container {
+    margin-top: 6rem;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .form-container {
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form-container {
+    margin-top: 5rem;
+  }
+
+  .form-heading {
+    font-size: 1.2rem;
+  }
+  .signin-section {
+    height: calc(100vh + -webkit-max-content);
+    height: calc(100vh + -moz-max-content);
+    height: calc(100vh + max-content);
+  }
+  .login-form {
+    width: 95%;
+  }
+}

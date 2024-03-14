@@ -1,0 +1,389 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* line-height: 1.5; */
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background: #0c0c0c;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.react-tabs__tab--selected {
+  color: #9164ff !important;
+  border-bottom: 2px solid #9164ff !important;
+}
+
+.react-tabs__tab:focus:after {
+  height: 0 !important;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  background: 111111;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #1c1e1f;
+  border-radius: 5px;
+  border: 3px solid #111111;
+}
+
+#chat {
+  background: #101010;
+}
+
+input {
+  color: white;
+}
+
+button {
+  color: white;
+}
+
+/* global scrollbar styling */
+/* scrollbar */
+.globalScroll {
+  overflow: scroll !important;
+  height: 100vh;
+}
+.globalScroll::-webkit-scrollbar {
+  width: 5px;
+  height: 6px;
+  /* change this value to adjust the height */
+}
+
+/* Track */
+.globalScroll::-webkit-scrollbar-track {
+  border: 0;
+}
+
+/* Handle */
+.globalScroll::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  border: 1px solid #1c1e1f;
+  background: #000;
+}
+
+/* Handle on hover */
+.globalScroll::-webkit-scrollbar-thumb:hover {
+  background: #1c1e1f;
+}
+
+/* Corner */
+.globalScroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* react menus global styling */
+.szh-menu {
+  border-radius: 10px;
+  background: #1f2224;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  padding: 4px 4px;
+  list-style: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 2;
+
+  /* backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgb(31, 34, 36, 0.5); */
+}
+
+.szh-menu__item {
+  padding: 12px;
+  border-radius: 10px;
+  color: #fff;
+  font-family: "Urbanist", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 18.2px */
+  min-width: 175px;
+}
+
+.szh-menu__submenu {
+  min-width: 220px;
+}
+
+.szh-menu__item--hover {
+  background: #383838;
+  cursor: pointer;
+}
+
+.szh-menu__item--disabled {
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* tooltips */
+.globalTooltip {
+  border-radius: 50px !important;
+  font-family: "Urbanist", sans-serif;
+  font-size: 13px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+/* swiper */
+
+/* .swiper {
+  padding: 0 50px !important;
+} */
+.swiper-slide {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.swiper-scrollbar-drag {
+  background-color: #717171 !important;
+}
+.swiper-scrollbar .swiper-scrollbar-horizontal {
+  bottom: 4.5px;
+}
+
+.swiper-wrapper {
+  padding-bottom: 18px !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: white !important;
+}
+
+.welcome-slider .swiper-pagination {
+  position: static;
+}
+
+/* navbar */
+.navbar-parent {
+  background: #000000;
+  box-shadow: 0px 4px 20px -5.71709px rgba(0, 0, 0, 0.15);
+  height: 3.6rem;
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 20;
+
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.4);
+}
+.navbar-parent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  z-index: -1;
+}
+
+.nav-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-logo:hover {
+  cursor: pointer;
+}
+
+/* landing page main button with shining animation */
+/* shining button */
+.mainButtonAnimate {
+  position: relative;
+  overflow: hidden;
+}
+
+/*        sheen effect      */
+/*This is the base animation*/
+.mainButtonAnimate:after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  bottom: -50%;
+  left: -50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(229, 172, 142, 0),
+    rgba(255, 255, 255, 0.227) 50%,
+    rgba(229, 172, 142, 0)
+  );
+  transform: rotateZ(134deg) translate(-5em, 7.5em);
+}
+/*This activates the sheen once the button has been hovered*/
+.mainButtonAnimate::after {
+  -webkit-animation: sheen 2s forwards infinite ease-in-out;
+  animation: sheen 2s forwards infinite ease-in-out;
+}
+@-webkit-keyframes sheen {
+  0% {
+    transform: rotateZ(134deg) translate(0, 10em);
+  }
+  100% {
+    transform: rotateZ(134deg) translate(1em, -10em);
+  }
+}
+@keyframes sheen {
+  0% {
+    transform: rotateZ(134deg) translate(0, 10em);
+  }
+  100% {
+    transform: rotateZ(134deg) translate(1em, -10em);
+  }
+}
+
+/* accordion global classes */
+.szh-accordion__item-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.szh-accordion__item-btn {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: 0;
+}
+
+@-webkit-keyframes l1 {
+  100% {
+    box-shadow: 0 0 0 15px #0000;
+  }
+}
+
+@keyframes l1 {
+  100% {
+    box-shadow: 0 0 0 15px #0000;
+  }
+}
+
+.offline {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.9);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.refresh {
+  background: #8133ef;
+
+  display: flex;
+  width: 142px;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: #cbc8c8;
+  text-align: center;
+  font-family: "Urbanist", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.refresh:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .swiper-wrapper {
+    padding-bottom: 10 !important;
+  }
+}
+
+/* Stripe Payment Form Styles  */
+
+.payment_message {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+@media only screen and (max-width: 768px) {
+  .payment_message {
+    gap: 5px;
+  }
+}
