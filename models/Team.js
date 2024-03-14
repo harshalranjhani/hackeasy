@@ -1,6 +1,7 @@
 import { Schema, model, models } from "mongoose";
 import User from "./User";
 import Event from "./Event";
+import Project from "./Project";
 import constants from "@/lib/constants";
 
 const TeamSchema = new Schema(
@@ -45,6 +46,11 @@ const TeamSchema = new Schema(
       unique: true,
       default: Math.random().toString(36).slice(-8),
     },
+    projectId: {
+      type: Schema.Types.ObjectId,
+      ref: "Project",
+      required: [true, "Please provide a project id"],
+    }
   },
   {
     timestamps: true,

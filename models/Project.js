@@ -2,22 +2,21 @@ import { Schema, model, models } from "mongoose";
 import Event from "./Event";
 import constants from "@/lib/constants";
 
-const FileSchema = new Schema(
-  {
-    title: {
-      type: String,
-      required: [true, "Please provide a file title"],
-    },
-    fileUrl: {
-      type: String,
-      required: [true, "Please provide a fileUrl"],
-    },
+const FileSchema = new Schema({
+  title: {
+    type: String,
+    required: [true, "Please provide a file title"],
   },
-  {
-    timestamps: true,
-    collection: "files",
-  }
-);
+  fileUrl: {
+    type: String,
+    required: [true, "Please provide a fileUrl"],
+  },
+  uploadedAt: {
+    type: Date,
+    required: [true, "Please provide an uploadedAt"],
+    default: Date.now,
+  },
+});
 
 const ProjectSchema = new Schema(
   {
@@ -32,6 +31,17 @@ const ProjectSchema = new Schema(
     githubLink: {
       type: String,
       required: [true, "Please provide a github link"],
+      default: "",
+    },
+    figmaLink: {
+      type: String,
+      required: [true, "Please provide a figma link"],
+      default: "",
+    },
+    extraLinks: {
+      type: String,
+      required: [false, "Please provide extra links"],
+      default: "",
     },
     file: {
       type: FileSchema,
@@ -69,7 +79,11 @@ const ProjectSchema = new Schema(
     roundProgress: {
       type: String,
       required: [true, "Please provide a round progress"],
-      enum: [constants.projectRoundProgress.PENDING, constants.projectRoundProgress.APPROVED, constants.projectRoundProgress.REJECTED],
+      enum: [
+        constants.projectRoundProgress.PENDING,
+        constants.projectRoundProgress.APPROVED,
+        constants.projectRoundProgress.REJECTED,
+      ],
       default: constants.projectRoundProgress.PENDING,
     },
     eventId: {
@@ -77,10 +91,10 @@ const ProjectSchema = new Schema(
       ref: "Event",
       required: [true, "Please provide an event id"],
     },
-    userId: {
+    teamId: {
       type: Schema.Types.ObjectId,
-      ref: "User",
-      required: [true, "Please provide a user id"],
+      ref: "Team",
+      required: [false, "Please provide a team id"],
     },
   },
   {

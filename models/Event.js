@@ -34,8 +34,18 @@ const EventSchema = new Schema(
     eventType: {
       type: String,
       required: [true, "Please provide an event type"],
-      enum: [constants.eventType.ONLINE, constants.eventType.OFFLINE, constants.eventType.HYBRID],
+      enum: [
+        constants.eventType.ONLINE,
+        constants.eventType.OFFLINE,
+        constants.eventType.HYBRID,
+      ],
       default: constants.eventType.ONLINE,
+    },
+    currentRound: {
+      type: Number,
+      required: [true, "Please provide current round"],
+      enum: [1, 2, 3],
+      default: 1,
     },
     authorId: {
       type: Schema.Types.ObjectId,
