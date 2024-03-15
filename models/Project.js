@@ -96,6 +96,13 @@ const ProjectSchema = new Schema(
       ref: "Team",
       required: [false, "Please provide a team id"],
     },
+    panelId: {
+      type: Schema.Types.ObjectId,
+      ref: "Panel",
+      required: [true, "Please provide a panel id"],
+      // initially the panel id might not be available
+      default: null,
+    },
   },
   {
     timestamps: true,
