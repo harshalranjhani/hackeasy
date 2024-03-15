@@ -86,7 +86,7 @@ const Event = (props) => {
       {props?.project?.panelId && <p>Panel Initiated</p>}
       <br />
       <button onClick={handleDownloadReport}>Download Report</button>
-      {loading && <p>Loading...</p>}
+      {loading && <p style={{margin: "1rem"}}>Loading...</p>}
       <br />
       <br />
       <br />
