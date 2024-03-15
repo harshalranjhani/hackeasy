@@ -32,16 +32,20 @@ const Event = (props) => {
 
   console.log(props);
   return (
-    <div>
+    <div style={{margin: "2rem"}}>
       <h1>{props?.project?.title}</h1>
       <p>{props?.project?.description}</p>
 
       <Link href={props?.project?.githubLink || ""}>Github</Link>
+      <br/>
       <Link href={props?.project?.figmaLink}>Figma Link</Link>
+      <br/>
       <p>Extra Links: {props?.project?.extraLinks}</p>
+      <br/>
       <p>Project TechStack: {props?.project?.techStack}</p>
-
+      <br/>
       {props?.project?.panelId && <p>Panel Initiated</p>}
+      <br/>
       <button onClick={reject}>Reject</button>
     </div>
   );

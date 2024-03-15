@@ -108,6 +108,7 @@ const Event = (props) => {
           Create Team Now
         </Link>
       )}
+      <br/>
       {!props?.team && (
         <Link href={`/team/join?eventId=${props.event._id}`}>
           Join Team with code

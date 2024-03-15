@@ -34,7 +34,7 @@ const Event = (props) => {
   }
 
   return (
-    <div>
+    <div style={{margin: "2rem"}}>
       <h1>{props?.event?.name}</h1>
       <p>{props?.event?.description}</p>
       <h2>Projects</h2>
@@ -47,8 +47,11 @@ const Event = (props) => {
           </li>
         ))}
       </ul>
-
+          <br/>
+          <br/>
       {!props?.project?.panelId && <button onClick={initiate}>Initiate Panels</button>}
+          <br/>
+          <br/>
       <p>Using default number of panels as : 3</p>
     </div>
   );
