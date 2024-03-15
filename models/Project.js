@@ -72,7 +72,7 @@ const ProjectSchema = new Schema(
     accepted: {
       type: Boolean,
       required: [true, "Please provide a project acceptance status"],
-      default: false,
+      default: true,
     },
     currentRound: {
       type: Number,

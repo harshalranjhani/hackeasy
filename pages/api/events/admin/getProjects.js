@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         .json({ success: false,error: "You are not authorized to perform this action." });
     }
 
-    const projects = await Project.find({ eventId: eventId, gitHubLinkVerified: true });
+    const projects = await Project.find({ eventId: eventId, gitHubLinkVerified: true, accepted: true });
     console.log(projects, eventId)
 
     return res.status(200).json({success: true, data: projects});

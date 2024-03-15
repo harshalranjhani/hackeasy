@@ -8,20 +8,42 @@ import constants from "@/lib/constants";
 import HackPage from "@/components/Hack/HackPage";
 
 const Event = (props) => {
+  const reject = async () => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/events/admin/reject`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: props.id,
+          projectId: props.project._id,
+        }),
+      }
+    );
+    const data = await response.json();
+    if (data.success) {
+      window.location.href = `/event/admin/${props.project.eventId}`;
+    } else {
+      toast.error("An error occurred while processing your request.");
+    }
+  };
+
   console.log(props);
   return (
     <div>
       <h1>{props?.project?.title}</h1>
-        <p>{props?.project?.description}</p>
+      <p>{props?.project?.description}</p>
 
-    <Link href={props?.project?.githubLink || ""}>Github</Link>
-    <Link href={props?.project?.figmaLink}>Figma Link</Link>
-    <p>Extra Links: {props?.project?.extraLinks}</p>
-    <p>Project TechStack: {props?.project?.techStack}</p>
+      <Link href={props?.project?.githubLink || ""}>Github</Link>
+      <Link href={props?.project?.figmaLink}>Figma Link</Link>
+      <p>Extra Links: {props?.project?.extraLinks}</p>
+      <p>Project TechStack: {props?.project?.techStack}</p>
 
-    {props?.project?.panelId && <p>Panel Initiated</p>}
-    {!props?.project?.panelId && <button>Initiate Panels</button>}
-    <button>Reject</button>
+      {props?.project?.panelId && <p>Panel Initiated</p>}
+      {!props?.project?.panelId && <button>Initiate Panels</button>}
+      <button onClick={reject}>Reject</button>
     </div>
   );
 };
