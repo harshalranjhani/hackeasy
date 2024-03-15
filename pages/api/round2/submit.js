@@ -40,10 +40,7 @@ export default async function handler(req, res) {
       },
     });
 
-    console.log(project);
-
     const userEmail = project?.teamId?.teamLead?.email;
-    console.log(userEmail)
 
     if (!project) {
       return res
@@ -63,12 +60,10 @@ export default async function handler(req, res) {
 
     const { username, repoName } = extractGitHubInfo(githubLink);
     if (!username || !repoName) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Something was wrong about the githubURL",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Something was wrong about the githubURL",
+      });
     }
 
     await runChecks(username, repoName, hackName, userEmail);
@@ -88,8 +83,8 @@ const runChecks = async (username, repoName, hackName, userEmail) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username,
-          repoName,
+          githubUsername: username,
+          repositoryName: repoName,
           hackName,
           userEmail,
         }),
@@ -97,7 +92,7 @@ const runChecks = async (username, repoName, hackName, userEmail) => {
     );
 
     const data = await response.json();
-    return {success: data.success, message: data.message}
+    return { success: data.success, message: data.message };
   } catch (e) {
     return { success: false, message: "Something went wrong!" };
   }
@@ -111,6 +106,7 @@ function extractGitHubInfo(url) {
   }
 
   const parts = urlObj.pathname.split("/").filter((part) => part.length);
+  console.log(parts);
 
   if (parts.length < 2) {
     throw new Error("URL does not include a username and a repository name");

@@ -3,6 +3,8 @@ import octokit from "./ocktokit";
 
 export default async function basicChecks(req, res) {
   const { githubUsername, repositoryName, userEmail, hackName } = req.body;
+  console.log(githubUsername)
+  console.log(repositoryName)
 
   try {
     console.log(userEmail);
@@ -17,6 +19,8 @@ export default async function basicChecks(req, res) {
         },
       }
     );
+
+    console.log(repoData)
 
     if (repoData.data.length === 0) {
       sendMail(
@@ -35,7 +39,7 @@ export default async function basicChecks(req, res) {
     console.log("All basic checks passed");
     return { success: true, message: "All basic checks passed!" };
   } catch (e) {
-    // console.error(e);
+    console.error(e);
     sendMail(
       userEmail,
       "Action Needed: Hackathon Submission",
