@@ -86,13 +86,13 @@ const Event = (props) => {
         );
       })}
 
-      {!props?.team?.projectId ?  <form onSubmit={handleUpload} encType="multipart/form-data">
+      {!props?.team?.projectId ? <form onSubmit={handleUpload} encType="multipart/form-data">
       <input type="file" name="file" onChange={handleFileChange} />
       <button type="submit">Upload File</button>
     </form> : `Round 1 completed! Current status: ${props?.team?.projectId?.status}`}
 
-      {!props?.team && <button>Create Team Now</button>}
-
+      {!props?.team && <Link href={`/team/create?eventId=${props.event._id}`}>Create Team Now</Link>}
+      {!props?.team && <Link href={`/team/join?eventId=${props.event._id}`}>Join Team with code</Link>}
       {/* <HackPage hackDetails={props?.event} /> */}
     </div>
   );
