@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         .status(404)
         .json({ success: false, message: "User not found" });
 
-    if (user.role !== constants.roles.USER)
+    if (user.role === constants.roles.USER)
       return res
         .status(403)
         .json({

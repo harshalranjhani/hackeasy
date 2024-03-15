@@ -9,8 +9,8 @@ import HackPage from "@/components/Hack/HackPage";
 import axios from "axios";
 
 const Event = (props) => {
-
   const [loading, setLoading] = useState(false);
+  const [comment, setComment] = useState("");
 
   const reject = async () => {
     const response = await fetch(
@@ -45,7 +45,7 @@ const Event = (props) => {
           idea: props?.project?.description,
         },
         {
-          responseType: "blob", 
+          responseType: "blob",
         }
       );
 
@@ -55,7 +55,7 @@ const Event = (props) => {
 
       const link = document.createElement("a");
       link.href = fileURL;
-      link.setAttribute("download", `${props?.project?.title}.pdf`); 
+      link.setAttribute("download", `${props?.project?.title}.pdf`);
       document.body.appendChild(link);
       link.click();
 
@@ -86,10 +86,63 @@ const Event = (props) => {
       {props?.project?.panelId && <p>Panel Initiated</p>}
       <br />
       <button onClick={handleDownloadReport}>Download Report</button>
-      {loading && <p style={{margin: "1rem"}}>Loading...</p>}
+      {loading && <p style={{ margin: "1rem" }}>Loading...</p>}
       <br />
       <br />
       <br />
+      <h4>Comments</h4>
+      <div>
+        {props.comments.map((comment) => (
+          <div key={comment._id}>
+            <p>{comment.comment}: {comment.userId.name}</p>
+          </div>
+        ))}
+      </div>
+      <br />
+      <br />
+      <h5>Add a new comment</h5>
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const comment = e.target.comment.value;
+          if (!comment) {
+            return;
+          }
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_URL}/api/comments/add`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                userId: props.id,
+                projectId: props.project._id,
+                comment,
+              }),
+            }
+          );
+          const data = await response.json();
+          if (data.success) {
+            window.location.reload();
+          } else {
+            toast.error("An error occurred while processing your request.");
+          }
+        }}
+      >
+        <input
+          type="text"
+          name="comment"
+          onChange={(e) => {
+            setComment(e.target.value);
+          }}
+        />
+        <br />
+        <button type="submit">Add Comment</button>
+      </form>
+      <br />
+      <br />
+      <button onClick={() => signOut()}>Sign Out</button>
       <button onClick={reject}>Reject</button>
     </div>
   );
@@ -145,12 +198,28 @@ export async function getServerSideProps(context) {
 
   console.log(projectData);
 
+  const comments = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/comments/get`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ projectId: projectId }),
+    }
+  );
+
+  const commentData = await comments.json();
+
+  console.log(commentData)
+
   return {
     props: {
       session,
       email: session.user.email,
       project: projectData.data || null,
       id: session.user.id,
+      comments: commentData.data || [],
     },
   };
 }
