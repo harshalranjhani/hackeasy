@@ -30,7 +30,7 @@ const Team = (props) => {
       return;
     }
 
-    console.log("sdfnoiudifioub")
+    console.log("sdfnoiudifioub");
 
     const response = await fetch("/api/round2/submit", {
       method: "POST",
@@ -38,7 +38,7 @@ const Team = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title, 
+        title,
         description,
         githubLink,
         figmaLink,
@@ -51,13 +51,12 @@ const Team = (props) => {
     });
 
     const data = await response.json();
-    console.log(data)
-    if(data.success) {
-        toast.success("Submitted!")
+    console.log(data);
+    if (data.success) {
+      toast.success("Submitted!");
     } else {
-        toast.error(data.message)
+      toast.error(data.message);
     }
-
   };
 
   return (
@@ -172,14 +171,31 @@ export async function getServerSideProps(context) {
 
   // check if teamMembers contains the user
   console.log(teamData.team.teamId.teamMembers.includes(session.user.id));
-  if (!teamData.team.teamId.teamMembers.includes(session.user.id)) {
-    return {
-      redirect: {
-        destination: `${process.env.NEXT_PUBLIC_URL}/event/${eventId}`,
-        permanent: true,
-      },
-    };
-  }
+  // if (!teamData.team.teamId.teamMembers.includes(session.user.id)) {
+  //   return {
+  //     redirect: {
+  //       destination: `${process.env.NEXT_PUBLIC_URL}/event/${eventId}`,
+  //       permanent: true,
+  //     },
+  //   };
+  // }
+
+  // let inTeam = false;
+  // teamData.team.teamId.teamMembers.forEach((member) => {
+  //   if (member.id === session.user.id) {
+  //     inTeam = true;
+  //   }
+  // });
+
+  // if (!inTeam) {
+  //   console.log("not in team")
+  //   return {
+  //     redirect: {
+  //       destination: `${process.env.NEXT_PUBLIC_URL}/event/${eventId}`,
+  //       permanent: true,
+  //     },
+  //   };
+  // }
 
   return {
     props: {
