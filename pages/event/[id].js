@@ -5,6 +5,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import constants from "@/lib/constants";
+import HackPage from "@/components/Hack/HackPage";
 
 const Event = (props) => {
   console.log(props)
@@ -91,6 +92,8 @@ const Event = (props) => {
     </form> : `Round 1 completed! Current status: ${props?.team?.projectId?.status}`}
 
       {!props?.team && <button>Create Team Now</button>}
+
+      {/* <HackPage hackDetails={props?.event} /> */}
     </div>
   );
 };

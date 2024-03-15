@@ -47,6 +47,11 @@ const EventSchema = new Schema(
       enum: [1, 2, 3],
       default: 1,
     },
+    prizePool: {
+      type: Number,
+      required: [true, "Please provide a prize pool"],
+      default: 0,
+    },
     authorId: {
       type: Schema.Types.ObjectId,
       ref: "User",
