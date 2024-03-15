@@ -41,8 +41,8 @@ const Event = (props) => {
       const response = await axios.post(
         "/api/round3/generateReport",
         {
-          query: "selenium based payment tracking system",
-          idea: "selenium based payment tracking system",
+          query: props?.project?.title,
+          idea: props?.project?.description,
         },
         {
           responseType: "blob", 
