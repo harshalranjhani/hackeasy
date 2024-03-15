@@ -12,6 +12,8 @@ export default async function searchIssuesAndPRs(query = "test") {
       }
     );
 
+    console.log(issuesData)
+
     const PRData = await octokit.request(
       `GET /search/issues?q=${encodedQuery}+is:pull-request`, 
       {

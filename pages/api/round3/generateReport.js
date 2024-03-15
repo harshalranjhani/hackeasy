@@ -1,3 +1,4 @@
+import getChecks from "./checks";
 import createPDFReport from "./createPDF";
 import gptCheck from "./gptCheck";
 
@@ -9,10 +10,10 @@ export default async function handler(req, res) {
   const { query, idea } = req.body;
 
   try {
-    // const data = await gptCheck(idea);
+    const data = await gptCheck(idea);
     const checkData = await getChecks(query);
-    console.log(checkData);
-    // const pdfBytes = await createPDFReport(data);
+    const finalData = { ...data, ...checkData };
+    const pdfBytes = await createPDFReport(finalData);
 
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader("Content-Disposition", "attachment; filename=report.pdf");
@@ -24,16 +25,3 @@ export default async function handler(req, res) {
       .json({ error: "An error occurred while processing your request." });
   }
 }
-
-const getChecks = async (query) => {
-  const checks = await fetch(`${process.env.NEXT_PUBLIC_URL}/round3/checks`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ query }),
-  });
-
-  const data = await checks.json();
-  return data;
-};
