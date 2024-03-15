@@ -1,0 +1,50 @@
+.h6 {
+    font-family: "Urbanist", sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    color: #9164ff;
+    line-height: 140%; /* 14px */
+    padding: 5px;
+  }
+  
+  .menu ul {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0);
+    -webkit-backdrop-filter: blur(44px);
+    backdrop-filter: blur(15px) saturate(180%);
+  
+    width: 250px;
+    padding: 5px;
+    top: 15px !important;
+  }
+  
+  .menuItem {
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-family: "Urbanist", sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 18.2px */
+    border: 0;
+    transition: all 0.2s ease-in 0s;
+  }
+  
+  .menuItem:hover {
+    color: #fff !important;
+    border-radius: 10px;
+    background: #181818;
+  }
+  
+  .menuItem:focus {
+    outline: none;
+  }
+  
+  @media screen and (max-width: 800px) {
+    .menu ul {
+      background: rgba(0, 0, 0, 1);
+    }
+  }

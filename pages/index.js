@@ -3,6 +3,7 @@ import Head from "next/head";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home({ articles }) {
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function Home({ articles }) {
         />
       </Head>
 
-      This is the landing page
+      <Navbar />
     </>
   );
 }

@@ -1,0 +1,278 @@
+.nav {
+  top: 0;
+}
+
+/* .nav + main {
+    padding-top: 150px !important;
+  } */
+
+.banner {
+  position: fixed;
+  width: 100%;
+  padding: 5px 10px;
+  z-index: 1000;
+  background-color: #fe6254;
+  display: flex;
+  gap: 1%;
+  align-items: center;
+  justify-content: center;
+}
+
+.bannerText {
+  font-family: "Urbanist", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17.5px;
+  text-align: center;
+}
+
+.banner > a {
+  display: flex;
+}
+
+/*Styling Links*/
+.nav-links-container {
+  display: flex;
+  width: 65%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.linksContainer {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-right: 12%;
+}
+
+.linksContainer span,
+.linksContainer span a {
+  color: #fff;
+  font-family: "Urbanist", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.5rem;
+}
+
+.nav-links-container span:hover,
+.linksContainer span a:hover {
+  /* font-weight: 400; */
+  cursor: pointer;
+  color: #9164ff;
+}
+
+/*Styling Buttons*/
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.buttonsContainer button {
+  border-radius: 14px;
+  color: #fff;
+  text-align: center;
+  font-family: "Urbanist", sans-serif;
+  font-style: normal;
+  margin-right: 5px;
+}
+
+.login-button {
+  background: transparent;
+  font-weight: 400;
+  line-height: 36px; /* 150% */
+  height: 2.7rem;
+  padding: 0 20px;
+}
+
+.signup-button {
+  border-radius: 17px;
+  background: linear-gradient(
+    126deg,
+    #6a35ee 0%,
+    #9930ef 14.24%,
+    #5737ee 49.56%,
+    #795ceb 93.2%
+  );
+  font-weight: 700;
+  line-height: 22px; /* 91.667% */
+}
+
+.signup-button > span {
+  background: linear-gradient(93deg, #fff 19.11%, #b7b7b7 89.62%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/*Styling Hamburger Icon*/
+.hamburger div {
+  width: 26px;
+  border-radius: 50px;
+  height: 3px;
+  background: #f2f5f7;
+  margin: 5px;
+  transition: all 0.4s ease;
+}
+.hamburger {
+  display: none;
+}
+
+/*Styling for small screens*/
+@media screen and (max-width: 1180px) {
+  .nav-links-container {
+    width: 67%;
+  }
+}
+@media screen and (max-width: 1140px) {
+  .nav {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  .linksContainer {
+    margin-right: 2%;
+  }
+  .nav-links-container {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .nav-links-container {
+    width: 80%;
+  }
+  .linksContainer span,
+  .linksContainer span a {
+    font-size: 14px;
+  }
+  .buttonsContainer button {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .nav {
+    /* padding: 6px;
+      height: 60px; */
+    /* top: 40px; */
+  }
+  /* .nav + main {
+      padding-top: 100px !important;
+    } */
+  .bannerText {
+    font-size: 12.5px;
+  }
+  .bannerBtnImg {
+    height: 30px;
+    /* width: 100px; */
+  }
+  .hamburger {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    right: 2%;
+    top: 50%;
+    transform: translate(-5%, -50%);
+    z-index: 2;
+    transition: all 0.4s ease;
+  }
+  .nav-links-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #131418;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    clip-path: circle(50px at 90% -20%);
+    -webkit-clip-path: circle(50px at 90% -10%);
+    transition: all 0.7s ease-out;
+    pointer-events: none;
+  }
+
+  /* .nav-links-container span {
+      opacity: 0;
+    } */
+
+  .linksContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .buttonsContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    gap: 20px;
+  }
+
+  .open {
+    clip-path: circle(1200px at 90% -10%);
+    -webkit-clip-path: circle(1400px at 90% -10%);
+    pointer-events: all;
+  }
+
+  .nav-links-container span:nth-child(1) {
+    transition: all 0.5s ease 0.2s;
+  }
+  .nav-links-container span:nth-child(2) {
+    transition: all 0.5s ease 0.4s;
+  }
+  .nav-links-container span:nth-child(3) {
+    transition: all 0.5s ease 0.6s;
+  }
+  .nav-links-container span:nth-child(4) {
+    transition: all 0.5s ease 0.7s;
+  }
+
+  .buttonsContainer span:nth-child(1) {
+    transition: all 0.5s ease 0.9s;
+  }
+  .buttonsContainer span:nth-child(2) {
+    transition: all 0.5s ease 1s;
+  }
+  .fade {
+    opacity: 1 !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .nav {
+    /* top: 78px; */
+  }
+  /* .nav + main {
+      padding-top: 150px !important;
+    } */
+  .banner {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .bannerText {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .nav {
+    /* top: 72px; */
+  }
+  .bannerText {
+    font-size: 11px;
+  }
+}
+
+/*Animating Hamburger Icon on Click*/
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+  transition: all 0.7s ease;
+  width: 0;
+}
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
