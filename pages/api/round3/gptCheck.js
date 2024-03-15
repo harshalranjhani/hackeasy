@@ -1,18 +1,11 @@
 // pages/api/analyze-idea.js
-import axios from "axios";
-
-import OpenAI from 'openai';
+import OpenAI from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, // This is the default and can be omitted
-})
+});
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method Not Allowed" });
-  }
-  const { idea } = req.body;
-
+export default async function gptCheck(idea) {
   const prompt = `
 I have a hackathon idea, and I need to analyze it. The idea is as follows: 
 ${idea}.
@@ -25,20 +18,20 @@ Based on this idea, please analyze the following:
 
   try {
     const completion = await openai.completions.create({
-        model: 'gpt-3.5-turbo-instruct',
-        prompt: prompt,
-        max_tokens: 500,
+      model: "gpt-3.5-turbo-instruct",
+      prompt: prompt,
+      max_tokens: 500,
     });
 
     console.log(completion.choices[0].text);
 
-
-    res.status(200).json({
+    return {
+      success: true,
       message: "Idea analyzed successfully",
       analysis: completion.choices[0].text,
-    });
+    };
   } catch (error) {
     console.error("Error calling the ChatGPT API:", error.message);
-    res.status(500).json({ error: "Failed to analyze the idea" });
+    return { success: false, error: "Failed to analyze the idea" };
   }
 }

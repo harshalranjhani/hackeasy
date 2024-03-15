@@ -6,6 +6,7 @@ import Link from "next/link";
 import { toast } from "react-toastify";
 import constants from "@/lib/constants";
 import HackPage from "@/components/Hack/HackPage";
+import axios from "axios";
 
 const Event = (props) => {
   const reject = async () => {
@@ -30,22 +31,62 @@ const Event = (props) => {
     }
   };
 
+  const handleDownloadReport = async () => {
+    try {
+      // Make a POST request to your API endpoint
+      const response = await axios.post(
+        "/api/round3/generateReport",
+        {
+          query: "github",
+          idea: "idea",
+        },
+        {
+          responseType: "blob", // Important to process the PDF binary
+        }
+      );
+
+      // Create a new Blob object using the response data of the request
+      const file = new Blob([response.data], { type: "application/pdf" });
+
+      // Create a URL for the blob
+      const fileURL = URL.createObjectURL(file);
+
+      // Create a temporary anchor element and trigger the download
+      const link = document.createElement("a");
+      link.href = fileURL;
+      link.setAttribute("download", `${props?.project?.title}.pdf`); // or any other filename
+      document.body.appendChild(link);
+      link.click();
+
+      // Clean up by revoking the object URL and removing the link
+      URL.revokeObjectURL(link.href);
+      link.parentNode.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading the report:", error);
+      // Handle error scenarios here
+    }
+  };
+
   console.log(props);
   return (
-    <div style={{margin: "2rem"}}>
+    <div style={{ margin: "2rem" }}>
       <h1>{props?.project?.title}</h1>
       <p>{props?.project?.description}</p>
 
       <Link href={props?.project?.githubLink || ""}>Github</Link>
-      <br/>
+      <br />
       <Link href={props?.project?.figmaLink}>Figma Link</Link>
-      <br/>
+      <br />
       <p>Extra Links: {props?.project?.extraLinks}</p>
-      <br/>
+      <br />
       <p>Project TechStack: {props?.project?.techStack}</p>
-      <br/>
+      <br />
       {props?.project?.panelId && <p>Panel Initiated</p>}
-      <br/>
+      <br />
+      <button onClick={handleDownloadReport}>Download Report</button>
+      <br />
+      <br />
+      <br />
       <button onClick={reject}>Reject</button>
     </div>
   );
