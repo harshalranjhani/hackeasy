@@ -57,7 +57,7 @@ export async function getServerSideProps(context) {
 
   session = JSON.parse(JSON.stringify(session));
 
-  const events = await fetch("http://localhost:3000/api/events/getAll", {
+  const events = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/events/getAll`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
