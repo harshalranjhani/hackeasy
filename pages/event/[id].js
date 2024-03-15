@@ -1,12 +1,50 @@
 import { getServerSession } from "next-auth";
-import React from "react";
+import React, { useState } from "react";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import constants from "@/lib/constants";
 
-const event = (props) => {
+const Event = (props) => {
+  console.log(props)
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]); 
+  };
+
+  const handleUpload = async (event) => {
+    event.preventDefault(); 
+
+    if (!file) {
+      alert('Please select a file first.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file); 
+    formData.set('teamId', props?.team?.teamId?._id);
+    formData.set("eventId", props?.event?._id)
+
+    try {
+      const response = await fetch('/api/round1/upload', {
+        method: 'POST',
+        body: formData, 
+      });
+
+      if (response.ok) {
+        // addRound1PPt(response.data.fileUrl, response.data.fileName)
+        toast.success("File uploaded successfully.")
+      } else {
+        toast.error("Failed to upload file.")
+      }
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      alert('Error uploading file.');
+    }
+  };
+
   return (
     <div>
       <h1>Event Name: {props?.event?.name}</h1>
@@ -46,12 +84,18 @@ const event = (props) => {
           </div>
         );
       })}
+
+      {!props?.team?.projectId ?  <form onSubmit={handleUpload} encType="multipart/form-data">
+      <input type="file" name="file" onChange={handleFileChange} />
+      <button type="submit">Upload File</button>
+    </form> : `Round 1 completed! Current status: ${props?.team?.projectId?.status}`}
+
       {!props?.team && <button>Create Team Now</button>}
     </div>
   );
 };
 
-export default event;
+export default Event;
 
 export async function getServerSideProps(context) {
   let session = await getServerSession(context.req, context.res, authOptions);

@@ -23,25 +23,27 @@ const ProjectSchema = new Schema(
     title: {
       type: String,
       required: [true, "Please provide a project title"],
+      default: "Name not provided"
     },
     description: {
       type: String,
       required: [true, "Please provide a project description"],
+      default: "Description not provided",
     },
     githubLink: {
       type: String,
       required: [true, "Please provide a github link"],
-      default: "",
+      default: "Github link not provided",
     },
     figmaLink: {
       type: String,
       required: [true, "Please provide a figma link"],
-      default: "",
+      default: "Figma link not provided",
     },
     extraLinks: {
       type: String,
       required: [false, "Please provide extra links"],
-      default: "",
+      default: "Extra links not provided",
     },
     file: {
       type: FileSchema,
@@ -50,10 +52,12 @@ const ProjectSchema = new Schema(
     techStack: {
       type: String,
       required: [true, "Please provide a tech stack"],
+      default: "Tech stack not provided",
     },
     futureProspects: {
       type: String,
       required: [true, "Please provide future prospects"],
+      default: "Future prospects not provided",
     },
     gitHubLinkVerified: {
       type: Boolean,
@@ -99,7 +103,7 @@ const ProjectSchema = new Schema(
     panelId: {
       type: Schema.Types.ObjectId,
       ref: "Panel",
-      required: [true, "Please provide a panel id"],
+      required: [false, "Please provide a panel id"],
       // initially the panel id might not be available
       default: null,
     },

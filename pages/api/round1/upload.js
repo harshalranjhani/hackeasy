@@ -53,6 +53,7 @@ export default async function handler(req, res) {
   try {
     await multerPromise();
 
+    console.log(req.body.teamId)
     const file = req.file;
     if (!file)
       throw new Error("The file is missing or the file type is not allowed.");
@@ -69,20 +70,7 @@ export default async function handler(req, res) {
     const title = result.original_filename;
     const fileUrl = result.url;
 
-    // const user = await User.findById(userId);
-    // const project = await Project.findById(projectId).populate({
-    //   path: "teamId",
-    //   populate: {
-    //     path: "teamMembers",
-    //   },
-    // });
-
-    // if (!user || !project) throw new Error("User or project not found");
-
-    // check if user id is in project teamMembers
-    // const isUserInTeam = project.teamId.teamMembers.some(
-    //   (member) => member._id.toString() === userId
-    // );
+    addRound1PPt(fileUrl, title, req.body.teamId, req.body.eventId);
 
     return res.status(200).json({ url: result.secure_url });
   } catch (error) {
@@ -90,3 +78,33 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: error.message });
   }
 }
+
+const addRound1PPt = async (fileUrl, fileName, teamId,eventId) => {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/round1/storeFileInDb`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fileUrl,
+        fileName,
+        teamId: teamId,
+        eventId: eventId,
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    if (data.success) {
+      // toast.success("File uploaded successfully.");
+      // toast.message(data.message);
+      console.log("File uploaded successfully.")
+    } else {
+      // toast.error("Failed to upload file.");
+      console.log("Failed to upload file.")
+    }
+  } catch (e) {
+    console.log(e.message)
+  }
+};

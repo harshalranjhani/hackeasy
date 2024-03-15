@@ -24,11 +24,14 @@ export default async function handler(req, res) {
         }
       });
 
+      const code = Math.random().toString(36).slice(-8);
+
       const team = await Team.create({
         name,
         teamDescription,
         teamLead,
         eventId,
+        teamCode: code,
       });
 
       // add participant schema for the user
@@ -47,6 +50,7 @@ export default async function handler(req, res) {
         message: "Created the team successfully!",
       });
     } catch (error) {
+      console.error(error);
       return res
         .status(500)
         .json({ success: false, message: "Internal server error" });

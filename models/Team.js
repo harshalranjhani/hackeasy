@@ -44,12 +44,12 @@ const TeamSchema = new Schema(
       type: String,
       required: [true, "Please provide a team code"],
       unique: true,
-      default: Math.random().toString(36).slice(-8),
     },
     projectId: {
       type: Schema.Types.ObjectId,
       ref: "Project",
-      required: [true, "Please provide a project id"],
+      required: [false, "Please provide a project id"],
+      default: null,
     },
   },
   {

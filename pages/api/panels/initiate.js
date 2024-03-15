@@ -25,7 +25,8 @@ export default async function handler(req, res) {
         .json({ message: "You are not authorized to perform this action" });
     }
 
-    const ocs = await User.find({ role: constants.roles.OC, eventId });
+    const ocs = await User.find({ role: constants.roles.OC });
+    console.log(ocs)
     const projects = await Project.find({ eventId });
 
     if (numberOfPanels <= 0 || numberOfPanels > ocs.length) {
@@ -48,6 +49,8 @@ export default async function handler(req, res) {
         .slice(projectStartIndex, projectStartIndex + projectsPerPanel)
         .map((project) => project._id);
 
+      console.log(teamIds)
+
       // Create and save the panel
       const panel = new Panel({
         eventId,
@@ -68,7 +71,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ message: "Panels initiated successfully" });
   } catch (e) {
-    console.error(e.message);
+    console.error(e);
     return res.status(500).json({ message: "Internal server error" });
   }
 }
