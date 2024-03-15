@@ -9,6 +9,9 @@ import HackPage from "@/components/Hack/HackPage";
 import axios from "axios";
 
 const Event = (props) => {
+
+  const [loading, setLoading] = useState(false);
+
   const reject = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/events/admin/reject`,
@@ -33,6 +36,7 @@ const Event = (props) => {
 
   const handleDownloadReport = async () => {
     try {
+      setLoading(true);
       // Make a POST request to your API endpoint
       const response = await axios.post(
         "/api/round3/generateReport",
@@ -41,29 +45,27 @@ const Event = (props) => {
           idea: "selenium based payment tracking system",
         },
         {
-          responseType: "blob", // Important to process the PDF binary
+          responseType: "blob", 
         }
       );
 
-      // Create a new Blob object using the response data of the request
       const file = new Blob([response.data], { type: "application/pdf" });
 
-      // Create a URL for the blob
       const fileURL = URL.createObjectURL(file);
 
-      // Create a temporary anchor element and trigger the download
       const link = document.createElement("a");
       link.href = fileURL;
-      link.setAttribute("download", `${props?.project?.title}.pdf`); // or any other filename
+      link.setAttribute("download", `${props?.project?.title}.pdf`); 
       document.body.appendChild(link);
       link.click();
 
-      // Clean up by revoking the object URL and removing the link
       URL.revokeObjectURL(link.href);
       link.parentNode.removeChild(link);
+
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.error("Error downloading the report:", error);
-      // Handle error scenarios here
     }
   };
 
@@ -84,6 +86,7 @@ const Event = (props) => {
       {props?.project?.panelId && <p>Panel Initiated</p>}
       <br />
       <button onClick={handleDownloadReport}>Download Report</button>
+      {loading && <p>Loading...</p>}
       <br />
       <br />
       <br />
