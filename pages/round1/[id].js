@@ -172,14 +172,14 @@ export async function getServerSideProps(context) {
 
   // check if teamMembers contains the user
   console.log(teamData.team.teamId.teamMembers.includes(session.user.id));
-  // if (!teamData.team.teamMembers.includes(session.user.id)) {
-  //   return {
-  //     redirect: {
-  //       destination: `${process.env.NEXT_PUBLIC_URL}/event/${eventId}`,
-  //       permanent: true,
-  //     },
-  //   };
-  // }
+  if (!teamData.team.teamId.teamMembers.includes(session.user.id)) {
+    return {
+      redirect: {
+        destination: `${process.env.NEXT_PUBLIC_URL}/event/${eventId}`,
+        permanent: true,
+      },
+    };
+  }
 
   return {
     props: {
