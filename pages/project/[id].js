@@ -42,7 +42,6 @@ const Event = (props) => {
       <p>Project TechStack: {props?.project?.techStack}</p>
 
       {props?.project?.panelId && <p>Panel Initiated</p>}
-      {!props?.project?.panelId && <button>Initiate Panels</button>}
       <button onClick={reject}>Reject</button>
     </div>
   );

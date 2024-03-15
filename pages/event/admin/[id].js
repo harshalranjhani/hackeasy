@@ -9,6 +9,30 @@ import HackPage from "@/components/Hack/HackPage";
 
 const Event = (props) => {
   console.log(props)
+
+  const initiate = async () => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/panels/initiate`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: props.id,
+          eventId: props.event._id,
+          numberOfPanels: 3,
+        }),
+      }
+    );
+    const data = await response.json();
+    if (data.success) {
+      window.location.href = `/event/admin/${props.event._id}`;
+    } else {
+      toast.error("An error occurred while processing your request.");
+    }
+  }
+
   return (
     <div>
       <h1>{props?.event?.name}</h1>
@@ -23,6 +47,9 @@ const Event = (props) => {
           </li>
         ))}
       </ul>
+
+      {!props?.project?.panelId && <button onClick={initiate}>Initiate Panels</button>}
+      <p>Using default number of panels as : 3</p>
     </div>
   );
 };
