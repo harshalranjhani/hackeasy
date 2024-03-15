@@ -1,8 +1,9 @@
 import sendMail from "@/lib/sendMail";
 import octokit from "./ocktokit";
+import Project from "@/models/Project";
 
 export default async function basicChecks(req, res) {
-  const { githubUsername, repositoryName, userEmail, hackName } = req.body;
+  const { githubUsername, repositoryName, userEmail, hackName, projectId } = req.body;
   console.log(githubUsername)
   console.log(repositoryName)
 
@@ -37,6 +38,9 @@ export default async function basicChecks(req, res) {
     }
 
     console.log("All basic checks passed");
+    const project = await Project.findById(projectId);
+    project.gitHubLinkVerified = true;
+    await project.save();
     return { success: true, message: "All basic checks passed!" };
   } catch (e) {
     console.error(e);

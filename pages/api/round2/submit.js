@@ -66,14 +66,14 @@ export default async function handler(req, res) {
       });
     }
 
-    await runChecks(username, repoName, hackName, userEmail);
+    await runChecks(username, repoName, hackName, userEmail, projectId);
   } catch (e) {
     console.log(e);
     return res.status(400).json({ success: false, message: e.message });
   }
 }
 
-const runChecks = async (username, repoName, hackName, userEmail) => {
+const runChecks = async (username, repoName, hackName, userEmail, projectId) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/round2/checks`,
@@ -87,6 +87,7 @@ const runChecks = async (username, repoName, hackName, userEmail) => {
           repositoryName: repoName,
           hackName,
           userEmail,
+          projectId: projectId,
         }),
       }
     );
