@@ -43,7 +43,10 @@ hackEasy is needed to change how hackathons are being hosted and conducted in to
 * Discovering other hacker's projects + Winning Projects
 * Code Verification- matching certain parts of the code for usage of mandatory apis etc. 
 * Experience virtual hackathons with our platform! Organizers can create custom immersive environments and activities. Participants join in using avatars for collaboration in closed virtual spaces. It's the future of hackathons brought to life!
-## Design Implentation
+  
+## Design Implementation
+
+![Home Screen](https://cdn.hashnode.com/res/hashnode/image/upload/v1710543227167/97UzEpc6g.jpg?auto=format)
 
 ## Contributors ⭐
 
