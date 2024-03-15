@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import { Schema, model, models } from "mongoose";
-import User from "./User"; // Assumed import path
-import Project from "./Project"; // Assumed import path
-import Panel from "./Panel"; // Assuming this is the schema you've provided
+import User from "./User"; 
+import Project from "./Project"; 
+import Panel from "./Panel";
 import constants from "@/lib/constants";
 import sendPanelInitMails from "./sendMails";
 
