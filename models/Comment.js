@@ -27,4 +27,4 @@ const CommentSchema = new Schema(
   }
 );
 
-export default models.Comment || model("Panel", CommentSchema);
+export default models.Comment || model("Comment", CommentSchema);
