@@ -94,7 +94,7 @@ const Event = (props) => {
       <div>
         {props.comments.map((comment) => (
           <div key={comment._id}>
-            <p>{comment.comment}: {comment.userId.name}</p>
+            <p>{comment.userId.name}: {comment.comment} </p>
           </div>
         ))}
       </div>
