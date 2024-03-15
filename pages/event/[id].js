@@ -94,9 +94,11 @@ const Event = (props) => {
       ) : (
         `Round 1 completed! Current status: ${props?.team?.teamId?.projectId?.roundProgress}`
       )}
-  <br/>
+      <br />
       {props?.team?.teamId?.projectId && (
-        <Link href={`/round1/${props?.team?.teamId?.projectId?._id}?eventId=${props.event._id}`}>
+        <Link
+          href={`/round1/${props?.team?.teamId?.projectId?._id}?eventId=${props.event._id}`}
+        >
           Submit Project Details
         </Link>
       )}
@@ -112,6 +114,8 @@ const Event = (props) => {
         </Link>
       )}
       {/* <HackPage hackDetails={props?.event} /> */}
+        <br />
+      <Link href={`/event/admin/${props.event._id}`}>View as Admin</Link>
     </div>
   );
 };

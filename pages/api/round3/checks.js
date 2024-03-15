@@ -7,11 +7,13 @@ export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
+
+  const { query } = req.body;
   try {
     // Use Promise.all to wait for both promises to resolve concurrently.
-    const commitSearchResults = await searchCommits();
-    const issuesAndPRSearchResults = await searchIssuesAndPRs();
-    const repositorySearchResults = await searchRepositories();
+    const commitSearchResults = await searchCommits(query);
+    const issuesAndPRSearchResults = await searchIssuesAndPRs(query);
+    const repositorySearchResults = await searchRepositories(query);
     const commitTimeLineResults = await commitTimeLine();
 
     // Combine the data from the two promises into a single object
