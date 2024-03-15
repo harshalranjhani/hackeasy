@@ -100,7 +100,7 @@ const Profile = (props) => {
       <label style={{ margin: "1rem" }}>
         Proof of Work:
         <input
-          type="text"
+          type="url"
           name="proofOfWork"
           onChange={(e) => {
             setProofOfWork(e.target.value);
