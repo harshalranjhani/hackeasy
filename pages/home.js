@@ -36,6 +36,13 @@ const home = (props) => {
             </>
           );
         })}
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <Link href={`/profile/${props.id}`}>My profile</Link>
       </div>
     </div>
   );
