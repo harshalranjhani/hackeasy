@@ -16,13 +16,19 @@ export default function Home({ articles }) {
         {/* <!-- Primary Meta Tags --> */}
         <title>HackEasy</title>
         <meta name="title" content="HackEasy" />
-        <meta
-          name="description"
-          content="HackEasy"
-        />
+        <meta name="description" content="HackEasy" />
       </Head>
 
       <Navbar />
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  return {
+    redirect: {
+      destination: "/home",
+      permanent: true,
+    },
+  };
 }

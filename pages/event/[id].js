@@ -8,41 +8,41 @@ import constants from "@/lib/constants";
 import HackPage from "@/components/Hack/HackPage";
 
 const Event = (props) => {
-  console.log(props)
+  console.log(props);
   const [file, setFile] = useState(null);
 
   const handleFileChange = (event) => {
-    setFile(event.target.files[0]); 
+    setFile(event.target.files[0]);
   };
 
   const handleUpload = async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     if (!file) {
-      alert('Please select a file first.');
+      alert("Please select a file first.");
       return;
     }
 
     const formData = new FormData();
-    formData.append('file', file); 
-    formData.set('teamId', props?.team?.teamId?._id);
-    formData.set("eventId", props?.event?._id)
+    formData.append("file", file);
+    formData.set("teamId", props?.team?.teamId?._id);
+    formData.set("eventId", props?.event?._id);
 
     try {
-      const response = await fetch('/api/round1/upload', {
-        method: 'POST',
-        body: formData, 
+      const response = await fetch("/api/round1/upload", {
+        method: "POST",
+        body: formData,
       });
 
       if (response.ok) {
         // addRound1PPt(response.data.fileUrl, response.data.fileName)
-        toast.success("File uploaded successfully.")
+        toast.success("File uploaded successfully.");
       } else {
-        toast.error("Failed to upload file.")
+        toast.error("Failed to upload file.");
       }
     } catch (error) {
-      console.error('Error uploading file:', error);
-      alert('Error uploading file.');
+      console.error("Error uploading file:", error);
+      alert("Error uploading file.");
     }
   };
 
@@ -86,13 +86,31 @@ const Event = (props) => {
         );
       })}
 
-      {!props?.team?.projectId ? <form onSubmit={handleUpload} encType="multipart/form-data">
-      <input type="file" name="file" onChange={handleFileChange} />
-      <button type="submit">Upload File</button>
-    </form> : `Round 1 completed! Current status: ${props?.team?.projectId?.status}`}
+      {!props?.team?.teamId?.projectId ? (
+        <form onSubmit={handleUpload} encType="multipart/form-data">
+          <input type="file" name="file" onChange={handleFileChange} />
+          <button type="submit">Upload File</button>
+        </form>
+      ) : (
+        `Round 1 completed! Current status: ${props?.team?.teamId?.projectId?.roundProgress}`
+      )}
+  <br/>
+      {props?.team?.teamId?.projectId && (
+        <Link href={`/round1/${props?.team?.teamId?.projectId?._id}?eventId=${props.event._id}`}>
+          Submit Project Details
+        </Link>
+      )}
 
-      {!props?.team && <Link href={`/team/create?eventId=${props.event._id}`}>Create Team Now</Link>}
-      {!props?.team && <Link href={`/team/join?eventId=${props.event._id}`}>Join Team with code</Link>}
+      {!props?.team && (
+        <Link href={`/team/create?eventId=${props.event._id}`}>
+          Create Team Now
+        </Link>
+      )}
+      {!props?.team && (
+        <Link href={`/team/join?eventId=${props.event._id}`}>
+          Join Team with code
+        </Link>
+      )}
       {/* <HackPage hackDetails={props?.event} /> */}
     </div>
   );

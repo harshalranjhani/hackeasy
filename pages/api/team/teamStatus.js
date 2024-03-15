@@ -31,9 +31,14 @@ export default async function handler(req, res) {
     })
       .populate({
         path: "teamId",
-        populate: {
-          path: "teamMembers",
-        },
+        populate: [
+          {
+            path: "teamMembers",
+          },
+          {
+            path: "projectId", 
+          },
+        ],
       })
       .exec();
 

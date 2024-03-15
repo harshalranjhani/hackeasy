@@ -1,12 +1,9 @@
 import sendMail from "@/lib/sendMail";
 import octokit from "./ocktokit";
 
-export default async function basicChecks(
-  githubUsername = "harshalranjhani",
-  repositoryName = "soundverse-saas",
-  hackName = "Technica",
-  userEmail = "ranjhaniharshal@gmail.com"
-) {
+export default async function basicChecks(req, res) {
+  const { githubUsername, repositoryName, userEmail, hackName } = req.body;
+
   try {
     console.log(userEmail);
     const repoData = await octokit.request(
@@ -31,9 +28,11 @@ export default async function basicChecks(
           Team ${hackName}
           `
       );
+      console.log("Repository is empty");
       return { success: false, message: "Repository is empty." };
     }
 
+    console.log("All basic checks passed");
     return { success: true, message: "All basic checks passed!" };
   } catch (e) {
     // console.error(e);
@@ -46,6 +45,7 @@ export default async function basicChecks(
       Team ${hackName}
     `
     );
+    console.log("Repository is private");
     return { success: false, error: "Repository is private!" };
   }
 }

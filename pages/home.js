@@ -73,7 +73,7 @@ export async function getServerSideProps(context) {
     props: {
       session,
       email: session.user.email,
-      events: eventData.events,
+      events: eventData?.events || null,
       id: session.user.id,
     },
   };
