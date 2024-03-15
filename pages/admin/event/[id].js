@@ -5,7 +5,6 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 
 const eventpage = (props) => {
-    console.log(props)
   return (
     <div>
       <ul>
